@@ -37,7 +37,6 @@ class HeroHeaderView: UIView {
     return downloadButton
   }()
 
-
   private func addGradient() {
     let gradientLayer = CAGradientLayer()
     gradientLayer.colors = [

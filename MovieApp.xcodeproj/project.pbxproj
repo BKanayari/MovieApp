@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6431CA192BC6DAEA0024065C /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6431CA182BC6DAEA0024065C /* CollectionViewTableViewCell.swift */; };
+		647FD23C2BDD7D6600CA0B5A /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647FD23B2BDD7D6600CA0B5A /* APICaller.swift */; };
 		64D6DFCF2BB2C714003BB187 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6DFCE2BB2C714003BB187 /* AppDelegate.swift */; };
 		64D6DFD12BB2C714003BB187 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6DFD02BB2C714003BB187 /* SceneDelegate.swift */; };
 		64D6DFD32BB2C714003BB187 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6DFD22BB2C714003BB187 /* MainTabBarViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		6431CA182BC6DAEA0024065C /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		647FD23B2BDD7D6600CA0B5A /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		64D6DFCB2BB2C714003BB187 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D6DFCE2BB2C714003BB187 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D6DFD02BB2C714003BB187 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		6431CA162BC6DA920024065C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				647FD23B2BDD7D6600CA0B5A /* APICaller.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				64D6DFE82BB2E9C2003BB187 /* SearchViewController.swift in Sources */,
 				64D6DFD32BB2C714003BB187 /* MainTabBarViewController.swift in Sources */,
 				6431CA192BC6DAEA0024065C /* CollectionViewTableViewCell.swift in Sources */,
+				647FD23C2BDD7D6600CA0B5A /* APICaller.swift in Sources */,
 				64D6DFCF2BB2C714003BB187 /* AppDelegate.swift in Sources */,
 				64FE214D2BCD826700115E47 /* HeroHeaderView.swift in Sources */,
 				64D6DFEA2BB2E9D4003BB187 /* DownloadViewController.swift in Sources */,

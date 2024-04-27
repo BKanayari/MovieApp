@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     homeFeedTable.tableHeaderView = headerView
 
     configureNavBar()
+    getTrendingMovies()
   }
 
   override func viewDidLayoutSubviews() {
@@ -48,6 +49,12 @@ class HomeViewController: UIViewController {
       UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
     ]
     navigationController?.navigationBar.tintColor = .white
+  }
+
+  private func getTrendingMovies() {
+    APICaller.shared.getTrendingMovies { _ in
+
+    }
   }
 }
 
@@ -88,6 +95,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
   }
 
+  /// Setting Section Header Title Modifier
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     guard let header = view as? UITableViewHeaderFooterView else {return}
     header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
