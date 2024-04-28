@@ -1,5 +1,5 @@
 //
-//  Movie.swift
+//  Tv.swift
 //  MovieApp
 //
 //  Created by bernardus kanayari on 28/04/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct MovieResponse: Codable {
-  let results: [Movie]
+struct TvResponse: Codable {
+  let results: [Tv]
 }
 
-struct Movie: Codable {
+struct Tv: Codable {
   let id: Int
   let original_title: String?
   let overview: String?

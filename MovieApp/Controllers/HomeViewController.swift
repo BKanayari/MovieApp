@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-  let sectionTitle: [String] = ["Trending", "Favorite", "New Realeases", "Recommeded for you", "Up Coming"]
+  let sectionTitle: [String] = ["Trending Movies", "Trending Tv", "Popular", "Upcoming Movies", "Top Rated"]
 
   private let homeFeedTable: UITableView = {
     let table = UITableView(frame: .zero, style: .grouped)
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     homeFeedTable.tableHeaderView = headerView
 
     configureNavBar()
-    getTrendingMovies()
+    fetchData()
   }
 
   override func viewDidLayoutSubviews() {
@@ -51,14 +51,17 @@ class HomeViewController: UIViewController {
     navigationController?.navigationBar.tintColor = .white
   }
 
-  private func getTrendingMovies() {
-    APICaller.shared.getTrendingMovies { result in
-      switch result {
-      case .success(let movies):
-        print(movies)
-      case .failure(let error):
-        print(error)
-      }
+  private func fetchData() {
+//    APICaller.shared.getTrendingMovies { result in
+//      switch result {
+//      case .success(let movies):
+//        print(movies)
+//      case .failure(let error):
+//        print(error)
+//      }
+//    }
+    APICaller.shared.getTopRatedMovies() { _ in
+
     }
   }
 }
@@ -106,6 +109,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
     header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
     header.textLabel?.textColor = .white
-    header.textLabel?.text = header.textLabel?.text?.capitalized
+    header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
   }
 }
