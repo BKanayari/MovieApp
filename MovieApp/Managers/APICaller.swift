@@ -20,7 +20,7 @@ class APICaller {
   static let shared = APICaller()
 
   // To get the Trending Movies data from the API
-  func getTrendingMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+  func getTrendingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
     
     guard let url = URL(string: "\(Constants.baseURL)3/trending/movie/day?api_key=\(Constants.API_KEY)") else {return}
 
@@ -30,17 +30,17 @@ class APICaller {
       }
 
       do {
-        let results = try JSONDecoder().decode(MovieResponse.self, from: data)
+        let results = try JSONDecoder().decode(TitleResponse.self, from: data)
         completion(.success(results.results))
       } catch {
-        completion(.failure(error))
+        completion(.failure(APIError.failedToGetData))
       }
     }
     task.resume()
   }
 
   // To get the Trending Tv data from the API
-  func getTrendingTvs(completion: @escaping (Result<[Tv], Error>) -> Void) {
+  func getTrendingTvs(completion: @escaping (Result<[Title], Error>) -> Void) {
 
     guard let url = URL(string: "\(Constants.baseURL)3/trending/tv/day?api_key=\(Constants.API_KEY)") else {return}
 
@@ -50,17 +50,17 @@ class APICaller {
       }
 
       do {
-        let results = try JSONDecoder().decode(TvResponse.self, from: data)
-        print(results)
+        let results = try JSONDecoder().decode(TitleResponse.self, from: data)
+        completion(.success(results.results))
       } catch {
-        print(error.localizedDescription)
+        completion(.failure(APIError.failedToGetData))
       }
     }
     task.resume()
   }
 
   // To get the Popular Movies data from the API
-  func getPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+  func getPopularMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
 
     guard let url = URL(string: "\(Constants.baseURL)3/movie/popular?api_key=\(Constants.API_KEY)") else {return}
 
@@ -70,17 +70,17 @@ class APICaller {
       }
 
       do {
-        let results = try JSONDecoder().decode(MovieResponse.self, from: data)
-        print(results)
+        let results = try JSONDecoder().decode(TitleResponse.self, from: data)
+        completion(.success(results.results))
       } catch {
-        print(error.localizedDescription)
+        completion(.failure(APIError.failedToGetData))
       }
     }
     task.resume()
   }
 
   // To get the Upcoming Movies data from the API
-  func getUpcomingMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+  func getUpcomingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
 
     guard let url = URL(string: "\(Constants.baseURL)3/movie/upcoming?api_key=\(Constants.API_KEY)") else {return}
 
@@ -90,17 +90,17 @@ class APICaller {
       }
 
       do {
-        let results = try JSONDecoder().decode(MovieResponse.self, from: data)
-        print(results)
+        let results = try JSONDecoder().decode(TitleResponse.self, from: data)
+        completion(.success(results.results))
       } catch {
-        print(error.localizedDescription)
+        completion(.failure(APIError.failedToGetData))
       }
     }
     task.resume()
   }
 
   // To get the Top Rated Movies data from the API
-  func getTopRatedMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+  func getTopRatedMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
 
     guard let url = URL(string: "\(Constants.baseURL)3/movie/top_rated?api_key=\(Constants.API_KEY)") else {return}
 
@@ -110,10 +110,10 @@ class APICaller {
       }
 
       do {
-        let results = try JSONDecoder().decode(MovieResponse.self, from: data)
-        print(results)
+        let results = try JSONDecoder().decode(TitleResponse.self, from: data)
+        completion(.success(results.results))
       } catch {
-        print(error.localizedDescription)
+        completion(.failure(APIError.failedToGetData))
       }
     }
     task.resume()
