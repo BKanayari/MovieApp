@@ -14,6 +14,7 @@ struct TitleResponse: Codable {
 struct Title: Codable {
   let id: Int
   let original_title: String?
+  let original_name: String?
   let overview: String?
   let popularity: Double
   let releaser_date: String?
