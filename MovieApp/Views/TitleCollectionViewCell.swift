@@ -12,6 +12,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
 
   static let identifier = "TitleCollectionViewCell"
 
+  // Creating component
   private let posterImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
@@ -33,7 +34,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
   }
 
   public func configure(with model: String) {
-    guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model)") else {return}
+    guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model)") else {return} /// Getting the poster image from API
     posterImageView.sd_setImage(with: url, completed: nil)
   }
 }

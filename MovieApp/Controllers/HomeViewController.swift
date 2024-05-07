@@ -37,7 +37,6 @@ class HomeViewController: UIViewController {
     homeFeedTable.tableHeaderView = headerView
 
     configureNavBar()
-    fetchData()
   }
 
   override func viewDidLayoutSubviews() {
@@ -45,7 +44,7 @@ class HomeViewController: UIViewController {
     homeFeedTable.frame = view.bounds
   }
 
-  /// Creating NavBar Item
+  // Creating NavBar Item
   private func configureNavBar() {
     var image = UIImage(named: "imgLogo")
     image = image?.withRenderingMode(.alwaysOriginal)
@@ -57,20 +56,6 @@ class HomeViewController: UIViewController {
       UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
     ]
     navigationController?.navigationBar.tintColor = .white
-  }
-
-  private func fetchData() {
-//    APICaller.shared.getTrendingMovies { result in
-//      switch result {
-//      case .success(let movies):
-//        print(movies)
-//      case .failure(let error):
-//        print(error)
-//      }
-//    }
-    APICaller.shared.getTopRatedMovies() { _ in
-
-    }
   }
 }
 
@@ -88,6 +73,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       return UITableViewCell()
     }
 
+    // Handle get method from API for every sections
     switch indexPath.section {
     case Sections.TrendingMovies.rawValue:
       APICaller.shared.getTrendingMovies { result in
@@ -153,7 +139,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     return 40
   }
 
-  /// Create navigationBar dissapear effect
+  // Create NavBar dissapear effect
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let defaultOffset = view.safeAreaInsets.top
     let offset = scrollView.contentOffset.y + defaultOffset
@@ -161,7 +147,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
   }
 
-  /// Setting Section Header Title Modifier
+  // Setting Section Header Title Modifier
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     guard let header = view as? UITableViewHeaderFooterView else {return}
     header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
