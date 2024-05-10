@@ -11,6 +11,7 @@ class UpcomingTableViewCell: UITableViewCell {
 
   static let identifier = "UpcomingTableViewCell"
 
+  // Creating Component
   private let titlesPosterImage: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
@@ -33,11 +34,18 @@ class UpcomingTableViewCell: UITableViewCell {
     return button
   }()
 
+  private let stopTitleButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("Pause", for: .normal)
+    return button
+  }()
+
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: UpcomingTableViewCell.identifier)
     contentView.addSubview(titlesPosterImage)
     contentView.addSubview(titleLabel)
     contentView.addSubview(playTitleButton)
+    contentView.addSubview(stopTitleButton)
 
     applyConstraints()
   }
@@ -64,12 +72,12 @@ class UpcomingTableViewCell: UITableViewCell {
       playTitleButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
     ]
 
-
     NSLayoutConstraint.activate(titlesPosterImageConstraints)
     NSLayoutConstraint.activate(titleLabelConstraints)
     NSLayoutConstraint.activate(playTitleButtonConstraints)
   }
 
+  // Displaying poster image from API
   public func configure(with model: TitleViewModel) {
     guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model.posterURL)") else {return}
     titlesPosterImage.sd_setImage(with: url, completed: nil)
