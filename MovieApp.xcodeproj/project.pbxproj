@@ -131,7 +131,6 @@
 				64D6DFE22BB2E98E003BB187 /* Controllers */,
 				64D6DFCE2BB2C714003BB187 /* AppDelegate.swift */,
 				64D6DFD02BB2C714003BB187 /* SceneDelegate.swift */,
-				64D6DFD22BB2C714003BB187 /* MainTabBarViewController.swift */,
 				647FD23F2BDE98A500CA0B5A /* Resources */,
 				6431CA162BC6DA920024065C /* Managers */,
 				64D6DFD72BB2C715003BB187 /* Assets.xcassets */,
@@ -145,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				64D6DFE32BB2E9A5003BB187 /* HomeViewController.swift */,
+				64D6DFD22BB2C714003BB187 /* MainTabBarViewController.swift */,
 				64D6DFE52BB2E9B3003BB187 /* UpComingViewController.swift */,
 				64D6DFE72BB2E9C2003BB187 /* SearchViewController.swift */,
 				64D6DFE92BB2E9D4003BB187 /* DownloadViewController.swift */,

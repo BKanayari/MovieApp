@@ -34,18 +34,11 @@ class UpcomingTableViewCell: UITableViewCell {
     return button
   }()
 
-  private let stopTitleButton: UIButton = {
-    let button = UIButton()
-    button.setTitle("Pause", for: .normal)
-    return button
-  }()
-
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: UpcomingTableViewCell.identifier)
     contentView.addSubview(titlesPosterImage)
     contentView.addSubview(titleLabel)
     contentView.addSubview(playTitleButton)
-    contentView.addSubview(stopTitleButton)
 
     applyConstraints()
   }

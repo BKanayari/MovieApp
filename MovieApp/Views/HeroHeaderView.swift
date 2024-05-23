@@ -39,11 +39,11 @@ class HeroHeaderView: UIView {
 
   private func addGradient() {
     let gradientLayer = CAGradientLayer()
+    gradientLayer.frame = bounds
     gradientLayer.colors = [
       UIColor.clear.cgColor,
       UIColor.systemBackground.cgColor
     ]
-    gradientLayer.frame = bounds
     layer.addSublayer(gradientLayer)
   }
 
@@ -84,6 +84,4 @@ class HeroHeaderView: UIView {
     super.layoutSubviews()
     heroImageView.frame = bounds
   }
-
-
 }
