@@ -7,15 +7,16 @@
 
 import UIKit
 
-class UpcomingTableViewCell: UITableViewCell {
+class TitleTableViewCell: UITableViewCell {
 
-  static let identifier = "UpcomingTableViewCell"
+  static let identifier = "TitleTableViewCell"
 
   // Creating Component
   private let titlesPosterImage: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
     imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.clipsToBounds = true
     return imageView
   }()
 
@@ -35,7 +36,7 @@ class UpcomingTableViewCell: UITableViewCell {
   }()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: UpcomingTableViewCell.identifier)
+    super.init(style: style, reuseIdentifier: TitleTableViewCell.identifier)
     contentView.addSubview(titlesPosterImage)
     contentView.addSubview(titleLabel)
     contentView.addSubview(playTitleButton)
@@ -50,7 +51,7 @@ class UpcomingTableViewCell: UITableViewCell {
   private func applyConstraints() {
     let titlesPosterImageConstraints = [
       titlesPosterImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      titlesPosterImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+      titlesPosterImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       titlesPosterImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
       titlesPosterImage.widthAnchor.constraint(equalToConstant: 100)
     ]
