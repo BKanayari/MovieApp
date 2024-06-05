@@ -95,7 +95,7 @@ extension SearchViewController: UISearchResultsUpdating {
           query.trimmingCharacters(in: .whitespaces).count >= 3,
           let resultController = searchController.searchResultsController as? SearchResultViewController else {return}
 
-    APICaller.shared.getSearchResult(with: query) { result in
+    APICaller.shared.search(with: query) { result in
       DispatchQueue.main.async {
         switch result {
         case .success(let titles):

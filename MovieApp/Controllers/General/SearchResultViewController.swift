@@ -48,7 +48,7 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     }
 
     let title = titles[indexPath.row]
-    cell.configure(with: title.poster_path ?? " ")
+    cell.configure(with: title.poster_path ?? "")
     return cell
   }
 }

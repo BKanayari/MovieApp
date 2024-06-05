@@ -139,7 +139,8 @@ class APICaller {
     task.resume()
   }
 
-  func getSearchResult(with query: String, completion: @escaping (Result<[Title], Error>) -> Void) {
+  // To get search result from API
+  func search(with query: String, completion: @escaping (Result<[Title], Error>) -> Void) {
     guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
     guard let url = URL(string: "\(Constants.baseURL)/3/search/movie?query=\(query)&api_key=\(Constants.API_KEY)") else {return}
     
