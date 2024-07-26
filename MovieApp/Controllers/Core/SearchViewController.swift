@@ -69,7 +69,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return titles.count
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as?
             TitleTableViewCell else {
@@ -92,16 +92,19 @@ extension SearchViewController: UISearchResultsUpdating {
 
     guard let query = searchBar.text,
           !query.trimmingCharacters(in: .whitespaces).isEmpty,
-          query.trimmingCharacters(in: .whitespaces).count >= 3,
+            query.trimmingCharacters(in: .whitespaces).count >= 3,
           let resultController = searchController.searchResultsController as? SearchResultViewController else {return}
+
 
     APICaller.shared.search(with: query) { result in
       DispatchQueue.main.async {
+        print("Search result:", result)
         switch result {
         case .success(let titles):
           resultController.titles = titles
           resultController.searchResultCollectionView.reloadData()
         case .failure(let error):
+          print("ga dapet su")
           print(error.localizedDescription)
         }
       }

@@ -73,6 +73,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       return UITableViewCell()
     }
 
+    cell.delegate = self
+
     // Handle get method from API for every sections
     switch indexPath.section {
     case Sections.TrendingMovies.rawValue:
@@ -154,5 +156,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
     header.textLabel?.textColor = .white
     header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
+  }
+}
+
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+  func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitleDetailViewModel) {
+    DispatchQueue.main.async { [weak self] in
+      let vc = TitleDetailViewController()
+      vc.configure(with: viewModel)
+      self?.navigationController?.pushViewController(vc, animated: true)
+    }
   }
 }

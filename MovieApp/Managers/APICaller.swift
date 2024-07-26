@@ -8,8 +8,10 @@
 import Foundation
 
 struct Constants {
-  static let API_KEY = "3a71a6952e55d4d9db72daf19b1bf0f4"
+  static let API_KEY = "9865abe00dc79ffbb61ad9dcc2e35c75"
   static let baseURL = "https://api.themoviedb.org/"
+  static let youtubeAPI_Key = "AIzaSyC8UajlzR9bZHghPdaQvJ5knvk-GKyiQfg"
+  static let youtubeBaseURL = "https://youtube.googleapis.com/youtube/v3/search?"
 }
 
 enum APIError: Error {
@@ -142,8 +144,8 @@ class APICaller {
   // To get search result from API
   func search(with query: String, completion: @escaping (Result<[Title], Error>) -> Void) {
     guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
-    guard let url = URL(string: "\(Constants.baseURL)/3/search/movie?query=\(query)&api_key=\(Constants.API_KEY)") else {return}
-    
+    guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?query=\(query)&api_key=\(Constants.API_KEY)") else {return}
+
     let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
       guard let data = data, error == nil else {
         return
@@ -153,7 +155,25 @@ class APICaller {
         let results = try JSONDecoder().decode(TitleResponse.self, from: data)
         completion(.success(results.results))
       } catch {
-        completion(.failure(APIError.failedToGetData))
+        completion(.failure(APIError.failedToGetData)) 
+      }
+    }
+    task.resume()
+  }
+  
+  // Get movie json file from Youtube API
+  func getMovie(with query: String, completion: @escaping (Result<VideoElement, Error>) -> Void) {
+    guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+    guard let url = URL(string: "\(Constants.youtubeBaseURL)q=\(query)&key=\(Constants.youtubeAPI_Key)") else {return}
+    let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+      guard let data = data, error == nil else {return}
+      
+      do {
+        let result = try JSONDecoder().decode(YoutubeSearchResponse.self, from: data)
+        completion(.success(result.items[0]))
+      } catch {
+        completion(.failure(error))
+        print(error.localizedDescription)
       }
     }
     task.resume()
